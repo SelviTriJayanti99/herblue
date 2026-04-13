@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | HerBlue Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #fdfcff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0; color: #333;
+        }
+
+        /* HEADER NAVIGASI (Sama dengan halaman lain) */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #4b0082;
+            padding: 15px 0;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.05);
+        }
+
+        .container {
+            width: 95%; max-width: 1200px;
+            margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
+        nav ul li a { text-decoration: none; color: #555; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
+        nav ul li a:hover, nav ul li a.active { color: #4b0082; font-weight: 700; }
+
+        /* KONTEN FAQ */
+        .faq-wrapper {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+        }
+
+        .faq-title {
+            text-align: center;
+            color: #4b0082;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .faq-subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-question i {
+            color: #4b0082;
+            margin-top: 4px;
+        }
+
+        .faq-answer {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            padding-left: 30px;
+        }
+
+        .contact-box {
+            background: #f0ebff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-box p { margin: 0 0 15px 0; color: #4b0082; font-weight: 600; }
+        .btn-hubungi { background: #4b0082; color: white; text-decoration: none; padding: 10px 25px; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block; }
+        .btn-hubungi:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="logo">
+                    <img src="logo.png" alt="HerBlue" style="height: 60px; width: auto; display: block;">
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="contact.html">Kontak</a></li>
+                    <li><a href="login.html"><i class="fas fa-user"></i> Profil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="faq-wrapper">
+        <h1 class="faq-title">FAQs</h1>
+        <p class="faq-subtitle">Panduan Lengkap untuk Pengalaman Terbaik Bersama HerBlue</p>
+
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Bagaimana cara saya memesan produk?</div>
+            <div class="faq-answer">
+                Pilih varian produk bunga telang favorit Anda di halaman "Menu", lalu klik tombol "Beli Sekarang". Anda akan diarahkan ke halaman Checkout untuk mengisi alamat, memilih jumlah pesanan, dan menentukan metode pembayaran.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Produk mana yang paling cocok untuk saya?</div>
+            <div class="faq-answer">
+                Jika Anda menyukai kepraktisan dan kesegaran instan, pilih varian <strong>Minuman Kaleng</strong> (Original, Lemon, atau Strawberry). Jika Anda ingin berkreasi membuat minuman atau pewarna makanan alami di rumah, <strong>Bubuk Bunga Telang</strong> adalah pilihan tepat. Untuk relaksasi teh herbal murni, pilih <strong>Bunga Kering Premium</strong> kami.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Apakah HerBlue menerima pesanan dalam jumlah besar untuk acara (B2B)?</div>
+            <div class="faq-answer">
+                Tentu saja! Kami hadir sebagai <i>one-stop solution</i> untuk kebutuhan acara Anda. Kami melayani pemesanan khusus untuk <i>event organizer</i>, pernikahan, kafe, atau restoran. Silakan hubungi layanan pelanggan kami untuk mendiskusikan kebutuhan spesifik Anda dan mendapatkan penawaran khusus.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Bisakah saya mengubah atau membatalkan pesanan saya?</div>
+            <div class="faq-answer">
+                Kami berusaha memproses pesanan dengan cepat. Jika Anda ingin memodifikasi atau membatalkan pesanan, segera hubungi kami melalui WhatsApp atau menu Kontak. Harap dicatat bahwa perubahan tidak dapat dilakukan jika pesanan sudah masuk ke tahap pengiriman.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Berapa lama waktu pengirimannya?</div>
+            <div class="faq-answer">
+                Untuk area Barombong, Gowa, dan sekitarnya (termasuk COD), pesanan biasanya tiba di hari yang sama. Untuk pengiriman reguler ke luar area tersebut, estimasi waktu pengiriman adalah 2-3 hari kerja tergantung layanan ekspedisi yang dipilih.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Pesanan saya belum tiba, apa yang harus saya lakukan?</div>
+            <div class="faq-answer">
+                Tetap tenang! Silakan tunggu 12-24 jam jika status pelacakan baru saja diperbarui. Jika pesanan melewati batas waktu estimasi, segera hubungi tim kami dengan menyertakan nama dan detail pesanan Anda agar kami dapat melacaknya ke pihak kurir.
+            </div>
+        </div>
+
+        <div class="contact-box">
+    <p>Masih punya pertanyaan lain seputar produk HerBlue?</p>
+    <a href="https://wa.me/6281340316651?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20HerBlue" 
+       class="btn-hubungi" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i> Hubungi Customer Service
+    </a>
+</div>
+
+</body>
+</html>

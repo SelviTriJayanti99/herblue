@@ -1,0 +1,482 @@
+/* Reset CSS Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header & Navigasi */
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #4b0082; /* Warna Indigo/Ungu Bunga Telang */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #4b0082;
+}
+
+/* Hero Section */
+
+.hero {
+    min-height: 80vh; /* Mengatur tinggi latar agar proporsional */
+    display: flex;
+    align-items: center;
+}
+
+.hero {
+    height: 100vh;
+    /* Ganti 'telang-bg.jpg' dengan gambar latar belakang bunga telang kamu */
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('telang-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-top: 80px; /* Menyesuaikan dengan tinggi header */
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.hero-content h1 span {
+    color: #4b0082; /* Warna aksen Telang */
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #4b0082;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #310057;
+}
+
+/* Menu Section */
+.menu {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.menu h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #222;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.menu-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.menu-item img {
+    max-width: 100%;
+    height: 250px; /* Atur tinggi gambar agar seragam */
+    object-fit: contain; /* Memastikan gambar produk tidak terpotong */
+    margin-bottom: 20px;
+}
+
+.menu-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.menu-item p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+    height: 40px; /* Atur tinggi deskripsi agar sejajar */
+    overflow: hidden; /* Sembunyikan teks yang terlalu panjang */
+}
+
+.price {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #4b0082;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* Media Query untuk Mobile (Responsif) */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Sembunyikan menu di mobile (bisa ditambahkan hamburger menu nanti) */
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+/* Gaya Modal Tambahan */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px; top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 12px;
+    background: #4b0082;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Style tambahan untuk About Me */
+.card-about {
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card-about:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(75, 0, 130, 0.1);
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 0 20px;
+    }
+}
+/* --- SECTION MANFAAT ESTETIK --- */
+.benefit-circle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.benefit-item {
+    text-align: center;
+    width: 200px;
+    transition: all 0.4s ease;
+}
+
+/* Lingkaran Ikon */
+.icon-circle {
+    width: 140px;
+    height: 140px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    /* Bayangan sangat halus (Soft Shadow) */
+    box-shadow: 0 15px 35px rgba(75, 0, 130, 0.08); 
+    border: 2px solid #f0ebff;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+/* Gambar di dalam lingkaran */
+.icon-circle img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(75, 0, 130, 0.1));
+}
+
+/* Efek saat kursor menyentuh (Hover) */
+.benefit-item:hover .icon-circle {
+    transform: translateY(-12px) scale(1.05);
+    border-color: #4b0082;
+    box-shadow: 0 25px 50px rgba(75, 0, 130, 0.15);
+}
+
+.benefit-item h4 {
+    color: #4b0082;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.benefit-item p {
+    color: #777;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 0 10px;
+}
+
+/* --- STYLE MANFAAT KOTAK ESTETIK --- */
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.benefit-card {
+    background: #ffffff;
+    padding: 40px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(75, 0, 130, 0.05); /* Bayangan sangat halus */
+    transition: all 0.4s ease;
+    border: 1px solid #f0ebff;
+}
+
+.benefit-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(75, 0, 130, 0.12);
+    border-color: #4b0082;
+}
+
+.benefit-icon-circle {
+    width: 100px;
+    height: 100px;
+    background: #f4f0ff;
+    border-radius: 50%; /* Tetap lingkaran di dalam kotak */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: 0.4s;
+}
+
+.benefit-card:hover .benefit-icon-circle {
+    background: #4b0082;
+}
+
+.benefit-icon-circle img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: 0.4s;
+}
+
+.benefit-card:hover .benefit-icon-circle img {
+    filter: brightness(0) invert(1); /* Gambar ikon berubah jadi putih saat hover */
+}
+
+.benefit-card h3 {
+    color: #4b0082;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.benefit-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- CHECKOUT PROFESSIONAL STYLE --- */
+.checkout-page {
+    background: #f8f6ff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.checkout-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.checkout-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(75, 0, 130, 0.1);
+}
+
+.btn-back {
+    text-decoration: none;
+    color: #4b0082;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    transform: translateX(-5px);
+}
+
+.checkout-header h2 {
+    color: #4b0082;
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.checkout-header p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.order-preview {
+    background: #f4f0ff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-info .label { color: #666; font-size: 13px; }
+.order-info .value { font-weight: 700; color: #333; }
+.order-info .price { color: #28a745; font-size: 18px; }
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b0082;
+    margin-bottom: 8px;
+}
+
+.input-group input, 
+.input-group textarea, 
+.input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.5px solid #eee;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #4b0082;
+    outline: none;
+    box-shadow: 0 0 10px rgba(75, 0, 130, 0.1);
+}
+
+
+}

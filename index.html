@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herblue - Kesegaran Bunga Telang Alami</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+    .menu-item p {
+        height: 65px; /* Batas tinggi kotak teks */
+        overflow-y: auto; /* Teks tetap bisa digeser */
+        
+        /* KODE AJAIB UNTUK MENGHILANGKAN GARIS SCROLL */
+        -ms-overflow-style: none;  /* Untuk browser Edge */
+        scrollbar-width: none;  /* Untuk browser Firefox */
+    }
+
+    /* Menghilangkan garis untuk Chrome & Safari */
+    .menu-item p::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+             <div class="logo">
+            <img src="logo.png" alt="HerBlue" style="height: 60px; width: auto; display: block;">
+            </div>
+           <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="contact.html">Kontak</a></li>
+                    <li><a href="login.html"><i class="fas fa-user"></i> Profil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero" style="background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('background-telang.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container hero-content">
+        <h1>Kesegaran Alami <br> <span>Bunga Telang</span></h1>
+        <p>Nikmati perpaduan unik rasa buah asli dan khasiat herbal bunga telang dalam setiap kaleng Herblue. Segar, sehat, dan penuh warna.</p>
+        <a href="#menu" class="btn">Lihat Menu</a>
+    </div>
+</section>
+
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>Menu Kami</h2>
+            <div class="menu-grid">
+
+                <div class="menu-item">
+                    <img src="bunga telang.jpeg">
+                    <h3>Bunga Kering Premium</h3>
+                    <p>Bunga telang kering pilihan untuk seduhan teh herbal harian yang menenangkan dan kaya antioksidan.</p>
+                    <span class="price">Rp 25.000</span>
+                    <a href="checkout.html?img=bunga telang.jpeg&name=Bunga Kering Premium&price=Rp 25.000" class="btn-buy" style="display: block; background: #4b0082; color: white; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold;">Beli Sekarang</a>
+                </div>
+
+                <div class="menu-item">
+                    <img src="bubuk.jpeg">
+                    <h3>Bubuk Bunga Telang</h3>
+                    <p>Ekstrak bunga telang murni yang mudah larut. Solusi praktis untuk minuman sehat dan pewarna alami.</p>
+                    <span class="price">Rp 25.000</span>
+                    <a href="checkout.html?img=bubuk.jpeg&name=Bubuk Bunga Telang&price=Rp 25.000" class="btn-buy" style="display: block; background: #4b0082; color: white; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold;">Beli Sekarang</a>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="kaleng strawberry.jpeg">
+                    <h3>Herblue Strawberry Fresh</h3>
+                    <p>"Pelepas dahaga terbaik! Kombinasi sari stroberi dan telang biru yang bikin segar seharian.</p>
+                    <span class="price">Rp 13.000</span>
+                   <a href="checkout.html?img=kaleng strawberry.jpeg&name=Herblue Strawberry Fresh&price=Rp 25.000" class="btn-buy" style="display: block; background: #4b0082; color: white; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold;">Beli Sekarang</a>
+                </div>
+
+                <div class="menu-item">
+                    <img src="original.jpeg"Herblue Original Bunga Telang">
+                    <h3>Herblue Bunga Telang</h3>
+                    <p>Rasa original HerBlue yang khas. Teman sehat yang pas untuk menemani padatnya aktivitasmu.</p>
+                    <span class="price">Rp 13.000</span>
+                  <a href="checkout.html?img=original.jpeg&name=Herblue Bunga Telang&price=Rp 20.000" class="btn-buy" style="display: block; background: #4b0082; color: white; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold;">Beli Sekarang</a>
+                </div>
+
+                <div class="menu-item">
+                    <img src="kaleng lemon.jpeg"Herblue Lemon Fresh">
+                    <h3>Herblue Lemon Fresh</h3>
+                    <p>Kembalikan semangatmu dengan boost vitamin C dari lemon dan antioksidan telang dalam satu kaleng.</p>
+                    <span class="price">Rp 13.000</span>
+                   <a href="checkout.html?img=kaleng lemon.jpeg&name=Herblue Lemon Fresh&price=Rp 20.000" class="btn-buy" style="display: block; background: #4b0082; color: white; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold;">Beli Sekarang</a>
+                </div>
+
+                <div class="menu-item">
+                    <img src="madu.jpeg"Herblue Lemon Fresh">
+                    <h3>Herblue Honey Fresh</h3>
+                    <p>Manisnya madu alami berpadu dengan teh telang. Pilihan manis yang lebih sehat dan melegakan tenggorokan.</p>
+                    <span class="price">Rp 13.000</span>
+                    <a href="checkout.html?img=madu.jpeg&name=Herblue Lemon Fresh&price=Rp 20.000" class="btn-buy" style="display: block; background: #4b0082; color: white; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold;">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Herblue Indonesia. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

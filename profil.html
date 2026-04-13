@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya | HerBlue Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0; color: #333;
+        }
+
+        /* HEADER NAVIGASI HERBLUE */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #4b0082;
+            padding: 8px 0;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.05);
+        }
+
+        .container {
+            width: 95%; max-width: 1200px;
+            margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
+        nav ul li a { text-decoration: none; color: #555; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
+        nav ul li a:hover, nav ul li a.active { color: #4b0082; font-weight: 700; }
+
+        /* LAYOUT HALAMAN PROFIL */
+        .profile-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* SIDEBAR KIRI */
+        .sidebar { width: 250px; }
+
+        .user-brief { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eaeaea; }
+        .user-brief img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .user-brief .name { font-weight: 600; font-size: 15px; color: #333; margin-bottom: 3px; }
+        .user-brief .edit-link { color: #888; font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        
+        .sidebar-menu { list-style: none; padding: 0; margin: 0; }
+        .menu-item { margin-bottom: 15px; }
+        .menu-title { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: #333; margin-bottom: 10px; cursor: pointer; transition: 0.3s; }
+        .menu-title:hover { color: #4b0082; }
+        .menu-title i { color: #4b0082; width: 20px; text-align: center; font-size: 18px; }
+        
+        .submenu { list-style: none; padding-left: 30px; margin: 0; }
+        .submenu li { margin-bottom: 10px; font-size: 14px; color: #666; cursor: pointer; transition: 0.2s; }
+        .submenu li:hover { color: #4b0082; }
+        .submenu li.active { color: #4b0082; font-weight: 600; }
+
+        /* KONTEN UTAMA KANAN */
+        .main-content {
+            flex: 1; background: white; border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05); padding: 30px;
+        }
+
+        .main-header { border-bottom: 1px solid #eaeaea; padding-bottom: 15px; margin-bottom: 30px; }
+        .main-header h2 { margin: 0 0 5px 0; font-size: 20px; color: #333; font-weight: 600; }
+        .main-header p { margin: 0; font-size: 14px; color: #666; }
+
+        .profile-grid { display: flex; gap: 50px; }
+        .form-section { flex: 1; }
+        
+        /* FORM ISIAN */
+        .form-group { display: flex; align-items: flex-start; margin-bottom: 20px; }
+        .form-group label { width: 140px; text-align: right; margin-right: 20px; color: #555; font-size: 14px; font-weight: 500; padding-top: 10px; }
+        
+        .input-text { flex: 1; padding: 10px 15px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Poppins'; font-size: 14px; outline: none; transition: 0.3s; max-width: 400px; color: #333; }
+        .input-text:focus { border-color: #4b0082; box-shadow: 0 0 0 2px rgba(75,0,130,0.1); }
+
+        /* PERBAIKAN DOB WRAPPER */
+        .dob-wrapper { display: flex; gap: 10px; flex: 1; max-width: 400px; }
+        .dob-input { flex: 1; text-align: center; padding: 10px 5px; }
+        /* Sembunyikan spinner panah di input number */
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+        .btn-simpan { background: #4b0082; color: white; border: none; padding: 12px 40px; font-size: 15px; font-weight: 600; border-radius: 4px; cursor: pointer; transition: 0.3s; margin-left: 160px; margin-top: 20px; }
+        .btn-simpan:hover { background: #3a0066; box-shadow: 0 4px 10px rgba(75,0,130,0.2); }
+
+        /* BAGIAN FOTO PROFIL KANAN */
+        .avatar-section {
+            width: 250px; display: flex; flex-direction: column; align-items: center;
+            border-left: 1px solid #eaeaea; padding-left: 50px;
+        }
+
+        .avatar-preview { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; margin-bottom: 20px; }
+        
+        .btn-upload-label { background: white; border: 1px solid #ccc; padding: 8px 15px; border-radius: 4px; font-family: 'Poppins'; font-size: 14px; font-weight: 500; cursor: pointer; transition: 0.3s; margin-bottom: 15px; color: #444; display: inline-block; text-align: center; }
+        .btn-upload-label:hover { background: #f9f9f9; border-color: #aaa; }
+        
+        .avatar-info { text-align: center; font-size: 13px; color: #888; line-height: 1.6; }
+
+        /* STYLE MODAL BERHASIL (TENGAH LAYAR) */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); z-index: 2000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: white; padding: 40px; border-radius: 15px; text-align: center; width: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); animation: zoomIn 0.3s ease;
+        }
+        .icon-circle {
+            width: 70px; height: 70px; background: #28a745; color: white; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; font-size: 35px; margin: 0 auto 20px;
+        }
+        .btn-modal-ok {
+            background: #4b0082; color: white; border: none; padding: 12px; width: 100%;
+            border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px; font-family: 'Poppins';
+        }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="logo">
+                    <img src="logo.png" alt="HerBlue" style="height: 50px; width: auto; display: block;">
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Kontak</a></li>
+                    <li><a href="profil.html" class="active">Profil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        
+        <aside class="sidebar">
+            <div class="user-brief">
+                <img id="sidebarPic" src="https://ui-avatars.com/api/?name=Selvi+Tri&background=4b0082&color=fff" alt="Avatar">
+                <div>
+                    <div class="name" id="sidebarName">selvitrijayanti</div>
+                    <a href="#" class="edit-link"><i class="fas fa-pencil-alt"></i> Ubah Profil</a>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <div class="menu-title" style="color: #4b0082;"><i class="fas fa-user"></i> Akun Saya</div>
+                    <ul class="submenu">
+                        <li class="active">Profil Terpusat</li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="main-header">
+                <h2>Profil Saya</h2>
+                <p>Kelola informasi data diri, alamat pengiriman, dan keamanan akun Anda di sini.</p>
+            </div>
+
+            <div class="profile-grid">
+                
+                <div class="form-section">
+                    
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="input-text" id="inputUsername" value="selvitrijayanti">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" class="input-text" id="inputNama" value="Selvi Tri Jayanti">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="input-text" id="inputEmail" value="slftry@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nomor Telepon</label>
+                        <input type="tel" class="input-text" id="inputPhone" value="081340316651">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="gender"> Laki-laki</label>
+                            <label class="radio-label"><input type="radio" name="gender" checked> Perempuan</label>
+                            <label class="radio-label"><input type="radio" name="gender"> Lainnya</label>
+                        </div>
+                    </div>
+
+                   <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <div class="dob-wrapper">
+                            <input type="number" id="dobDay" class="input-text dob-input" placeholder="Tanggal" min="1" max="31">
+                            <input type="number" id="dobMonth" class="input-text dob-input" placeholder="Bulan" min="1" max="12">
+                            <input type="number" id="dobYear" class="input-text dob-input" placeholder="Tahun" min="1900" max="2026">
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label>Alamat Lengkap</label>
+                        <input type="text" class="input-text" id="inputAlamat" value="Jl. Pendidikan">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password Baru</label>
+                        <input type="password" class="input-text" id="inputPassword" placeholder="********">
+                    </div>
+
+                    <button class="btn-simpan" onclick="simpanProfil()">Simpan Semua Perubahan</button>
+                </div>
+
+                <div class="avatar-section">
+                    <img src="https://ui-avatars.com/api/?name=Selvi+Tri&background=4b0082&color=fff&size=200" alt="Profile Preview" id="profileImage" class="avatar-preview">
+                    
+                    <label for="uploadFoto" class="btn-upload-label">Pilih Gambar</label>
+                    <input type="file" id="uploadFoto" style="display: none;" accept="image/*" onchange="previewFoto(event)">
+                    
+                    <div class="avatar-info">
+                        Ukuran gambar: maks. 1 MB<br>
+                        Format gambar: .JPEG, .PNG
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+    </div>
+
+    <div id="modalSuccess" class="modal-overlay">
+        <div class="modal-content">
+            <div class="icon-circle">✓</div>
+            <h3 style="margin:0; font-weight:600;">Berhasil!</h3>
+            <p style="color:#666; font-size:14px; margin-top:10px;">Perubahan berhasil disimpan</p>
+            <button onclick="closeModal()" class="btn-modal-ok">Oke</button>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi mengganti foto saat dipilih dari komputer
+        function previewFoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // Cek ukuran file (1MB = 1048576 bytes)
+                if (file.size > 1048576) {
+                    alert("File terlalu besar! Maksimal 1 MB.");
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update foto profil di kanan
+                    document.getElementById('profileImage').src = e.target.result;
+                    // Update foto profil kecil di sidebar
+                    document.getElementById('sidebarPic').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Fungsi saat tombol simpan ditekan
+        function simpanProfil() {
+            const namaBaru = document.getElementById('inputNama').value;
+            const usernameBaru = document.getElementById('inputUsername').value;
+
+            if(namaBaru.trim() === '' || usernameBaru.trim() === '') {
+                alert("Username dan Nama Lengkap tidak boleh kosong!");
+                return;
+            }
+
+            // Update nama di Sidebar secara otomatis
+            document.getElementById('sidebarName').innerText = usernameBaru;
+
+            // TAMPILKAN MODAL SUKSES (Centang Hijau)
+            document.getElementById('modalSuccess').style.display = 'flex';
+        }
+
+        // Fungsi Menutup Modal
+        function closeModal() {
+            document.getElementById('modalSuccess').style.display = 'none';
+        }
+
+        // Tutup modal jika klik di luar kotak putih
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalSuccess');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

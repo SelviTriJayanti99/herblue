@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - HerBlue</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+             <div class="logo">
+            <img src="logo.png" alt="HerBlue" style="height: 90px; width: auto; display: block;">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="contact.html"style="color: #4b0082;">Kontak</a></li>
+                    <li><a href="login.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="margin-top: 120px; padding-bottom: 80px;">
+        <section class="container">
+            <h1 style="text-align: center; color: #4b0082; margin-bottom: 50px;">Hubungi Kami</h1>
+            
+            <div style="display: flex; gap: 50px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="margin-bottom: 20px;">Mari Berdiskusi</h2>
+                    <p style="color: #666; margin-bottom: 30px;">Punya pertanyaan tentang produk atau ingin melakukan pemesanan khusus? Kami siap membantu Anda.</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <p><strong><i class="fas fa-location-dot" style="color: #4b0082;"></i> Alamat:</strong></p>
+                        <p>Jl. Rappocini Raya, Makassar, Sulawesi Selatan</p>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <p><strong><i class="fab fa-whatsapp" style="color: #4b0082;"></i> WhatsApp:</strong></p>
+                        <p>0812-3456-7890</p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <p><strong><i class="fas fa-envelope" style="color: #4b0082;"></i> Email:</strong></p>
+                        <p>hello@herblue.id</p>
+                    </div>
+
+                    <div class="sosmed-icons" style="display: flex; gap: 15px;">
+                        <a href="#" style="font-size: 24px; color: #4b0082;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="font-size: 24px; color: #4b0082;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div style="flex: 1; min-width: 300px; background: #f9f9f9; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                  <form id="contactForm">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Masukkan nama Anda" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Email / WhatsApp</label>
+        <input type="text" id="kontak" placeholder="Kontak yang bisa dihubungi" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+    </div>
+    <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px;">Pesan Anda</label>
+        <textarea id="pesan" placeholder="Tulis pesan di sini..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; height: 120px;"></textarea>
+    </div>
+    <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Kirim Pesan</button>
+</form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HerBlue - Makassar, Indonesia</p>
+    </footer>
+</body>
+</html>
+<script>
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Mencegah halaman refresh saat klik kirim
+
+        // Ambil nama untuk pesan personal
+        const namaUser = document.getElementById('nama').value;
+
+        // Tampilkan pesan berhasil
+        alert("Terima kasih, " + namaUser + "! Pesan Anda berhasil dikirim ke tim HerBlue.");
+
+        // Mengosongkan kembali form setelah dikirim
+        form.reset();
+    });
+</script>

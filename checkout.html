@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | HerBlue Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* DASAR & BACKGROUND GRADASI */
+        body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f5f3ff 50%, #ede9fe 100%);
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0; color: #222;
+            min-height: 100vh;
+        }
+
+        /* HEADER NAVIGASI */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #4b0082;
+            padding: 15px 0;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.05);
+        }
+
+        .container {
+            width: 95%; max-width: 1200px;
+            margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        .container-content {
+            width: 1200px; margin: 0 auto;
+        }
+
+        .logo-text { color: #4b0082; font-size: 28px; font-weight: 700; text-decoration: none; }
+
+        /* MENU NAVIGASI */
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
+        nav ul li a { text-decoration: none; color: #555; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
+        nav ul li a:hover, nav ul li a.active { color: #4b0082; font-weight: 700; }
+
+        /* KOTAK KONTEN UTAMA */
+        .content-wrapper { width: 1200px; margin: 0 auto; padding-bottom: 50px; }
+        .section-box {
+            background: white; padding: 30px; margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 15px;
+        }
+        .section-header { display: flex; align-items: center; gap: 10px; color: #4b0082; font-size: 18px; margin-bottom: 20px; }
+
+        /* ALAMAT & FORM EDIT ALAMAT */
+        .address-detail { display: flex; gap: 20px; font-size: 15px; align-items: center; }
+        
+        .edit-input {
+            width: 100%; padding: 10px 15px; margin-bottom: 10px;
+            border: 1px solid #ddd; border-radius: 8px;
+            font-family: 'Poppins', sans-serif; font-size: 14px;
+            box-sizing: border-box; outline: none; transition: 0.3s;
+        }
+        .edit-input:focus { border-color: #4b0082; box-shadow: 0 0 0 2px rgba(75,0,130,0.1); }
+        
+        .btn-simpan-alamat { background: #4b0082; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Poppins'; }
+        .btn-batal-alamat { background: #f5f5f5; color: #555; border: 1px solid #ddd; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Poppins'; }
+
+        /* TABEL PRODUK */
+        .product-table { width: 100%; border-collapse: collapse; }
+        .product-table th { text-align: left; color: #888; font-weight: 400; padding-bottom: 15px; border-bottom: 1px solid #f5f5f5; }
+        .product-item { display: flex; align-items: center; gap: 15px; padding: 15px 0; }
+        .product-img { width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 1px solid #eee; }
+
+        /* TOMBOL TAMBAH/KURANG JUMLAH (QTY) */
+        .quantity-control { display: flex; align-items: center; gap: 12px; }
+        .qty-btn {
+            background-color: #fff; border: 1px solid #ddd; color: #4b0082;
+            width: 30px; height: 30px; border-radius: 6px; cursor: pointer;
+            font-weight: bold; font-size: 18px; display: flex; justify-content: center; align-items: center; transition: 0.2s;
+        }
+        .qty-btn:hover { background-color: #f0ebff; border-color: #4b0082; }
+        #qtyNumber { font-weight: 600; font-size: 16px; width: 25px; text-align: center; }
+
+        /* METODE PEMBAYARAN */
+        .payment-options { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+        .payment-options input[type="radio"] { display: none; }
+        .payment-label { padding: 10px 25px; border: 1.5px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 14px; background: #fff; transition: 0.2s; min-width: 100px; text-align: center; }
+        .payment-options input[type="radio"]:checked + .payment-label { border-color: #4b0082; color: #4b0082; background: #fdfcff; position: relative; outline: 1px solid #4b0082; }
+        .payment-options input[type="radio"]:checked + .payment-label::after { content: "✔"; position: absolute; bottom: -1px; right: -1px; background: #4b0082; color: white; font-size: 9px; padding: 2px 4px; border-radius: 2px 0 0 0; }
+
+        .pay-detail-box { background: #fafafa; padding: 20px; border: 1px solid #eee; margin-top: 15px; display: none; }
+        .bank-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+        .bank-item { display: flex; align-items: center; gap: 15px; padding: 10px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: 0.2s; }
+        .bank-item:hover { background: #f0ebff; }
+        .bank-item input[type="radio"] { accent-color: #4b0082; width: 18px; height: 18px; }
+        .bank-logo { width: 45px; height: 25px; object-fit: contain; }
+
+        /* RINGKASAN HARGA & TOMBOL */
+        .summary-wrapper { display: flex; justify-content: flex-end; background: #fffefb; padding: 25px; border-top: 1px dashed #ddd; border-radius: 0 0 15px 15px; }
+        .summary-table { width: 350px; }
+        .row-info { display: flex; justify-content: space-between; margin-bottom: 12px; color: #666; font-size: 14px; }
+        .total-amount { font-size: 28px; color: #4b0082; font-weight: 700; }
+        .checkout-action { display: flex; justify-content: flex-end; padding: 20px 0 50px; }
+        .btn-submit { background: linear-gradient(to right, #4b0082, #6a0dad); color: white; border: none; padding: 15px 60px; font-size: 18px; font-weight: 700; cursor: pointer; border-radius: 50px; transition: 0.3s; margin-top: 20px; }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(75, 0, 130, 0.2); }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="logo">
+                    <img src="logo.png" alt="HerBlue" style="height: 70px; width: auto; display: block;">
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="contact.html">Kontak</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="login.html"><i class="fas fa-user"></i> Profil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="section-box">
+            <div class="section-header">
+                <i class="fas fa-map-marker-alt"></i> Alamat Pengiriman
+            </div>
+            
+            <div class="address-detail" id="displayAlamatArea">
+                <div style="flex: 1;">
+                    <strong id="displayNama">Selvi (+62) 813 4031 6651</strong><br>
+                    <span id="displayJalan" style="color: #555; font-size: 14px; margin-top: 5px; display: inline-block;">Jl. Pelita Tamanyeleng RT 2 RW 3, Barombong, Kab. Gowa, Sulawesi Selatan</span>
+                </div>
+                <a href="javascript:void(0)" onclick="bukaEditAlamat()" style="color: #4b0082; text-decoration: none; font-size: 14px; font-weight: 600;">Ubah</a>
+            </div>
+
+            <div id="formEditAlamatArea" style="display: none; background: #fdfcff; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                <label style="font-size: 12px; color: #888; font-weight: 600; margin-bottom: 5px; display: block;">Nama & Nomor HP</label>
+                <input type="text" id="inputNama" class="edit-input" placeholder="Contoh: Nama Kamu (+62) 812...">
+                
+                <label style="font-size: 12px; color: #888; font-weight: 600; margin-bottom: 5px; margin-top: 10px; display: block;">Alamat Lengkap</label>
+                <textarea id="inputJalan" class="edit-input" rows="3" placeholder="Nama Jalan, RT/RW, Kecamatan, Kota..."></textarea>
+                
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="btn-simpan-alamat" onclick="simpanAlamat()">Simpan Alamat</button>
+                    <button class="btn-batal-alamat" onclick="batalEditAlamat()">Batal</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Produk Dipesan</th>
+                        <th>Harga Satuan</th>
+                        <th>Jumlah</th>
+                        <th>Subtotal Produk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="product-item">
+                                <img id="pImg" src="original.jpeg" class="product-img">
+                                <div>
+                                    <div id="pName" style="font-weight: 600;">HerBlue Premium</div>
+                                    <small style="color: #999;">Barang Siap Kirim</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td id="pPrice">Rp 25.000</td>
+                        <td>
+                            <div class="quantity-control">
+                                <button class="qty-btn" onclick="ubahJumlah(-1)">-</button>
+                                <span id="qtyNumber">1</span>
+                                <button class="qty-btn" onclick="ubahJumlah(1)">+</button>
+                            </div>
+                        </td>
+                        <td id="pSubtotal" style="font-weight: 600; color: #4b0082;">Rp 25.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-box" style="padding-bottom: 0;">
+            <div class="section-header" style="color: #333; font-size: 16px;">Metode Pembayaran</div>
+            
+            <div class="payment-options">
+                <label><input type="radio" name="mainPay" value="cod" onclick="togglePay('cod')"><div class="payment-label">COD</div></label>
+                <label><input type="radio" name="mainPay" value="bank" onclick="togglePay('bank')"><div class="payment-label">Transfer Bank</div></label>
+                <label><input type="radio" name="mainPay" value="qris" onclick="togglePay('qris')"><div class="payment-label">QRIS</div></label>
+            </div>
+
+            <div id="payBox" class="pay-detail-box"></div>
+
+            <div class="summary-wrapper">
+                <div class="summary-table">
+                    <div class="row-info">
+                        <span>Subtotal untuk Produk</span>
+                        <span id="sumProd">Rp 25.000</span>
+                    </div>
+                    <div class="row-info">
+                        <span>Total Pengiriman</span>
+                        <span>Rp 10.000</span>
+                    </div>
+                    <div class="row-info" style="margin-top: 15px; align-items: center;">
+                        <span style="font-size: 16px;">Total Pembayaran</span>
+                        <span class="total-amount" id="sumTotal">Rp 35.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="checkout-action">
+            <button class="btn-submit" onclick="finish()">Buat Pesanan Sekarang</button>
+        </div>
+    </div>
+
+    <script>
+        let hargaSatuan = 0;
+        let jumlahBeli = 1;
+        const ongkir = 10000;
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const img = params.get('img');
+            const name = params.get('name');
+            const price = params.get('price') || "Rp 25.000";
+
+            if(img) document.getElementById('pImg').src = img;
+            if(name) document.getElementById('pName').innerText = name;
+            
+            document.getElementById('pPrice').innerText = price;
+            
+            hargaSatuan = parseInt(price.replace(/[^0-9]/g, ''));
+            updateTotal();
+        }
+
+        /* --- SCRIPT UNTUK EDIT ALAMAT --- */
+        function bukaEditAlamat() {
+            // Sembunyikan tampilan teks alamat
+            document.getElementById('displayAlamatArea').style.display = 'none';
+            // Tampilkan kotak form isian
+            document.getElementById('formEditAlamatArea').style.display = 'block';
+            
+            // Masukkan teks yang ada saat ini ke dalam kotak isian
+            document.getElementById('inputNama').value = document.getElementById('displayNama').innerText;
+            document.getElementById('inputJalan').value = document.getElementById('displayJalan').innerText;
+        }
+
+        function simpanAlamat() {
+            const namaBaru = document.getElementById('inputNama').value;
+            const jalanBaru = document.getElementById('inputJalan').value;
+
+            // Cek kalau kosong
+            if(namaBaru.trim() === '' || jalanBaru.trim() === '') {
+                alert("Data alamat tidak boleh kosong ya!");
+                return;
+            }
+
+            // Update teks tampilan dengan data baru
+            document.getElementById('displayNama').innerText = namaBaru;
+            document.getElementById('displayJalan').innerText = jalanBaru;
+
+            // Kembalikan tampilannya
+            document.getElementById('formEditAlamatArea').style.display = 'none';
+            document.getElementById('displayAlamatArea').style.display = 'flex';
+        }
+
+        function batalEditAlamat() {
+            // Batal, langsung kembalikan tampilan
+            document.getElementById('formEditAlamatArea').style.display = 'none';
+            document.getElementById('displayAlamatArea').style.display = 'flex';
+        }
+        /* -------------------------------- */
+
+        function ubahJumlah(perubahan) {
+            let jumlahBaru = jumlahBeli + perubahan;
+            if (jumlahBaru < 1) return;
+            
+            jumlahBeli = jumlahBaru;
+            document.getElementById('qtyNumber').innerText = jumlahBeli;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let subtotalProduk = hargaSatuan * jumlahBeli;
+            let totalAkhir = subtotalProduk + ongkir;
+
+            document.getElementById('pSubtotal').innerText = "Rp " + subtotalProduk.toLocaleString('id-ID');
+            document.getElementById('sumProd').innerText = "Rp " + subtotalProduk.toLocaleString('id-ID');
+            document.getElementById('sumTotal').innerText = "Rp " + totalAkhir.toLocaleString('id-ID');
+        }
+
+        function togglePay(method) {
+            const box = document.getElementById('payBox');
+            box.style.display = "block";
+
+            if(method === 'bank') {
+                box.innerHTML = `
+                    <div style="font-weight: 600; margin-bottom: 10px; font-size: 14px;">Pilih Bank</div>
+                    <div class="bank-list">
+                        <label class="bank-item"><input type="radio" name="b"> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-logo"> <span>Bank BCA</span></label>
+                        <label class="bank-item"><input type="radio" name="b"> <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" class="bank-logo"> <span>Bank Mandiri</span></label>
+                        <label class="bank-item"><input type="radio" name="b"> <img src="https://tse1.mm.bing.net/th/id/OIP.nL9v9QnRc9wBHJIHB9svDwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" class="bank-logo"> <span>Bank BNI</span></label>
+                        <label class="bank-item"><input type="radio" name="b"> <img src="https://cdn.freelogovectors.net/wp-content/uploads/2023/02/bri-logo-freelogovectors.net_.png" class="bank-logo"> <span>Bank BRI</span></label>
+                    </div>
+                `;
+            } else if(method === 'qris') {
+                box.innerHTML = "<strong>QRIS</strong><br>Scan QRIS dengan aplikasi pembayaran pilihanmu.<br><img src='https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=HerBlue' style='margin-top:10px; border-radius: 8px;'>";
+            } else {
+                box.innerHTML = "<strong>COD (Bayar di Tempat)</strong><br>Bayar pesanan secara tunai saat kurir tiba.";
+            }
+        }
+
+        function finish() {
+            // Ambil data terbaru untuk dikirim (opsional)
+            const namaTujuan = document.getElementById('displayNama').innerText;
+            const alamatTujuan = document.getElementById('displayJalan').innerText;
+            
+            alert(`Pesanan HerBlue untuk ${namaTujuan} berhasil dibuat! Mohon tunggu konfirmasi WhatsApp.`);
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
